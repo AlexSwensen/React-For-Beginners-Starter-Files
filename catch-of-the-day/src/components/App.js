@@ -3,6 +3,19 @@ import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
 class App extends React.Component {
+  state = {
+    fishes: {},
+    order: []
+  };
+  addFish = fish => {
+    // to update state:
+    // take a copy of the existing state...
+    const fishes = { ...this.state.fishes };
+    // add our new fish
+    fishes[`fish${Date.now()}`] = fish;
+    // Set the new fishes object to state
+    this.setState({ fishes });
+  };
   render() {
     return (
       <div className="catch-of-the-day">
@@ -10,7 +23,7 @@ class App extends React.Component {
           <Header tagline="Fresh Seafood Market" />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addFish={this.addFish} />
       </div>
     );
   }
