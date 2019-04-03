@@ -11,6 +11,7 @@ class EditFishForm extends React.Component {
     // update state
     this.props.updateFish(this.props.index, updatedFish);
   };
+
   render() {
     return (
       <div className="fish-edit">
@@ -48,6 +49,9 @@ class EditFishForm extends React.Component {
           placeholder="Image"
           value={this.props.fish.image}
         />
+        <button onClick={() => this.props.deleteFish(this.props.index)}>
+          Delete Fish
+        </button>
       </div>
     );
   }
